@@ -9,7 +9,7 @@
  * internal imports
  */
  const { authConfig } = require('./config');
- const { testMsg } = require('./config/env');
+ const apiRouter = require('./router');
 /**
  * app activation
  */
@@ -32,39 +32,11 @@ app.use(auth(authConfig));
 /**
  * routes
  */
-app.get('/api', (req, res, next) => {
-
-  res.status(200).send('API: click on other path.');
-
-});
-
-app.get('/api/works', (req, res, next) => {
-
-  res.status(200).send('API: get works.');
-
-});
-
-app.get('/api/photos', (req, res, next) => {
-
-  res.status(200).send('API: get photos.');
-
-});
-
-app.get('/api/profile', (req, res, next) => {
-
-  res.status(200).send('API: get profile.');
-
-});
-
-app.get('/api/test', (req, res, next) => {
-
-  res.status(200).send(testMsg);
-
-});
+app.use('/api', apiRouter);
 /**
  * error handling
  */
- app.use(function(req, res, next) {
+ app.use('*', function(req, res, next) {
   const error = new Error('path not found.');
   next(error);
 });
