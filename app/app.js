@@ -49,6 +49,12 @@ app.get('/api/photos', (req, res, next) => {
 
 });
 
+app.get('/api/profile', (req, res, next) => {
+
+  res.status(200).send('API: get profile.');
+
+});
+
 app.get('/api/test', (req, res, next) => {
 
   const test = process.env.TEST_MSG;
