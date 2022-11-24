@@ -24,6 +24,12 @@ const app = express();
 /**
  * routes
  */
+app.get('/test', (req, res, next) => {
+
+  const test = process.env.TEST_MSG;
+  res.status(200).send(test);
+
+});
 /**
  * error handling
  */

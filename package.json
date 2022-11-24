@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "build": ""
+    "build": "",
+    "dev": "NODE_ENV=development nodemon -r dotenv/config index.js"
   },
   "repository": {
     "type": "git",
@@ -23,7 +24,8 @@
   "homepage": "https://github.com/airgead73/portfolio-api#readme",
   "dependencies": {
     "cookie-parser": "^1.4.6",
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "express-openid-connect": "^2.10.0"
   },
   "devDependencies": {
     "dotenv": "^16.0.3",
