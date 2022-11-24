@@ -1,5 +1,6 @@
 /* GENERAL ENVIRONMENT */
 const isDev = process.env.NODE_ENV === 'development';
+const testMsg = process.env.TEST_MSG;
 
 /* AUTH */
 const authSecret = process.env.AUTH_SECRET;
@@ -11,6 +12,10 @@ const issuerURL = process.env.ISSUER_BASE_URL;
 const mongoURI = process.env.MONGO_URI + 'db_v1';
 
 /* Check Variables */
+if(!testMsg) {
+  throw new Error('.env is missing the definition of TEST_MSG environment variable.');
+}
+
 if(!authSecret) {
   throw new Error('.env is missing the definition of AUTH_SECRET environment variable.');
 }
@@ -39,4 +44,5 @@ module.exports = {
   isDev,
   issuerURL,
   mongoURI,
+  testMsg
 }

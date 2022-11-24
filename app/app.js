@@ -31,22 +31,25 @@ app.use(auth(authConfig));
 /**
  * routes
  */
-app.get('/', (req, res, next) => {
+app.get('/api', (req, res, next) => {
 
-  const { isAuthenticated } = res.locals;
-
-  console.log(isAuthenticated);
-
-  if(!isAuthenticated) {
-    return res.status(401).redirect('/login');
-  }
-
-  next();
-
+  res.status(200).send('API: click on other path.');
 
 });
 
-app.get('/test', (req, res, next) => {
+app.get('/api/works', (req, res, next) => {
+
+  res.status(200).send('API: get works.');
+
+});
+
+app.get('/api/photos', (req, res, next) => {
+
+  res.status(200).send('API: get photos.');
+
+});
+
+app.get('/api/test', (req, res, next) => {
 
   const test = process.env.TEST_MSG;
   res.status(200).send(test);
