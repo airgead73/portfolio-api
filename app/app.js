@@ -35,6 +35,8 @@ app.get('/', (req, res, next) => {
 
   const { isAuthenticated } = res.locals;
 
+  console.log(isAuthenticated);
+
   if(!isAuthenticated) {
     return res.status(401).redirect('/login');
   }
