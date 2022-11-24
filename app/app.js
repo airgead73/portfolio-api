@@ -8,10 +8,11 @@
 /**
  * internal imports
  */
+ const { authConfig } = require('./config');
+ const { testMsg } = require('./config/env');
 /**
  * app activation
  */
-const { authConfig } = require('./config');
 const app = express();
 app.use(auth(authConfig));
 /**
@@ -57,8 +58,7 @@ app.get('/api/profile', (req, res, next) => {
 
 app.get('/api/test', (req, res, next) => {
 
-  const test = process.env.TEST_MSG;
-  res.status(200).send(test);
+  res.status(200).send(testMsg);
 
 });
 /**
