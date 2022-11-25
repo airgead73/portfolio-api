@@ -49,7 +49,7 @@ app.use(function(err, req, res, next) {
     status = err.status;
   }
 
-  res.send(`ERROR: ${err.message}`);
+  res.status(status).send(`ERROR: ${err.message}`);
 
 });
 /**
