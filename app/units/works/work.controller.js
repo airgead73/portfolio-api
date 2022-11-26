@@ -1,3 +1,4 @@
+const fetch = require('node-fetch');
 /**
  * @desc Read works 
  * @route GET - /works
@@ -8,7 +9,15 @@
 
   try {
 
-    res.status(200).send('API read works');
+    const response = await fetch('localhost://8080/api/works');
+    const data = await response.json();
+
+    return res.status(200)
+      .json({
+        success: true,
+        message: 'API get works',
+        data
+      })
 
   } catch(err) {
 
