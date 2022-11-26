@@ -10,11 +10,13 @@
  */
  const { authConfig } = require('./config');
  const apiRouter = require('./router');
+ const main = require('./config/config.db');
 /**
  * app activation
  */
 const app = express();
 app.use(auth(authConfig));
+main().catch(console.error);
 /**
  * middleware
  */

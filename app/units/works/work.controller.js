@@ -1,4 +1,5 @@
-const fetch = require('node-fetch');
+const { json } = require('express');
+
 /**
  * @desc Read works 
  * @route GET - /works
@@ -9,15 +10,7 @@ const fetch = require('node-fetch');
 
   try {
 
-    const response = await fetch('localhost://8080/api/works');
-    const data = await response.json();
-
-    return res.status(200)
-      .json({
-        success: true,
-        message: 'API get works',
-        data
-      })
+    res.status(200).send('API read authors');
 
   } catch(err) {
 
