@@ -13,13 +13,22 @@ app.set('port', port);
 
 const server = http.createServer(app);
 
-dbo.connectToServer(function(err) {
-  if(err) {
+// dbo.connectToServer(function(err) {
+//   if(err) {
+//     console.error(err);
+//     process.exit();
+//   }
+//   server.listen(port);
+// })
+
+dbo.connectToServer()
+  .then(() => {
+    server.listen(port);
+  })
+  .catch(err => {
     console.error(err);
     process.exit();
-  }
-  server.listen(port);
-})
+  });
 
 server.on('error', onError);
 server.on('listening', onListening);

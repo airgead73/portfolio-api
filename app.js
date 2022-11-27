@@ -7,7 +7,7 @@
  /**
   * internal imports
  **/
-const dbo = require('./db');
+const router = require('./router');
  /**
  * app activation
  */
@@ -22,34 +22,35 @@ const app = express();
  /**
  * routes
  */
-app.get('/api/works', async(req, res, next) => {
+app.use('/api', router);
+// app.get('/api/works', async(req, res, next) => {
 
-  const dbConnect = dbo.getDb();
+//   const dbConnect = dbo.getDB();
 
-  dbConnect
-    .collection('works')
-    .find({})
-    .toArray(function (err, result) {
-      if(err) {
-        return res.status(400).send('Error fetching works');
-      } else {
-        return res.status(200).json(result);
-      }
-    })
+//   dbConnect
+//     .collection('works')
+//     .find({})
+//     .toArray(function (err, result) {
+//       if(err) {
+//         return res.status(400).send('Error fetching works');
+//       } else {
+//         return res.status(200).json(result);
+//       }
+//     });
 
-});
+// });
 
-app.get('/api/photos', async(req, res, next) => {
+// app.get('/api/photos', async(req, res, next) => {
 
-  try {
+//   try {
 
-    res.status(200).send('API get photos');
+//     res.status(200).send('API get photos');
 
-  } catch(err) {
-    next(err);
-  }
+//   } catch(err) {
+//     next(err);
+//   }
 
-});
+// });
 
 /**
  * error handling

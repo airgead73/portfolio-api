@@ -8,24 +8,20 @@ const client = new MongoClient(uri, {
 
 let dbConnection;
 
-const connectToServer = function(callback) {
-  client.connect(function (err, db) {
-    if (err || !db) {
-      return callback(err);
-    }
+const connectToServer = async function() {
 
-    dbConnection = db.db(dbName);
-    console.log('Successfully connected to MongoDB.');
+  await client.connect();
+  dbConnection = client.db(dbName);
+  console.log('Successfully connected to database');
 
-    return callback();
-  });
 }
 
-const getDb = function() {
+const getDB = function() {
   return dbConnection;
 }
 
+
 module.exports = {
   connectToServer,
-  getDb
+  getDB
 };
