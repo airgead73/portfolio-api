@@ -1,4 +1,4 @@
 # portfolio-api
 API for portfolio view.
-## Branch v2
-connect to db
+## Branch v3
+strip to basics
