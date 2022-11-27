@@ -1,4 +1,4 @@
-const { json } = require('express');
+const dbo = require('../../database/conn');
 
 /**
  * @desc Read works 
@@ -7,10 +7,26 @@ const { json } = require('express');
  * */
 
  exports.read = async(req,res,next) => {
+ 
 
   try {
 
-    res.status(200).send('API read authors');
+    const results = await db.READ('works');
+
+    return res.status(200).json(results);
+
+    // dbConnect
+    //   .collection('works')
+    //   .find({})
+    //   .limit(50)
+    //   .toArray(function(err, result) {
+    //     if(err) {
+    //       console.log(err);
+    //     } else {
+    //       return res.status(200).json(result);
+    //     }
+    //   })
+
 
   } catch(err) {
 
