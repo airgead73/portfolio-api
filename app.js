@@ -7,7 +7,6 @@
  /**
   * internal imports
  **/
-const port = process.env.PORT || 7070;
 const dbo = require('./db');
  /**
  * app activation
@@ -74,12 +73,4 @@ app.use(function(err, req, res, next) {
 /**
  * app listen
  */
-dbo.connectToServer(function(err) {
-  if(err) {
-    console.error(err);
-    process.exit();
-  }
-})
-app.listen(port, () => {
-  console.log(`Listening on port ${port}.`);
-});
+module.exports = app;
