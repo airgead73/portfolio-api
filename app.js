@@ -8,6 +8,7 @@
   * internal imports
  **/
 const port = process.env.PORT || 7070;
+const dbo = require('./db');
  /**
  * app activation
  */
@@ -24,13 +25,18 @@ const app = express();
  */
 app.get('/api/works', async(req, res, next) => {
 
-  try {
+  const dbConnect = dbo.getDb();
 
-    res.status(200).send('API get works');
-
-  } catch(err) {
-    next(err);
-  }
+  dbConnect
+    .collection('works')
+    .find({})
+    .toArray(function (err, result) {
+      if(err) {
+        return res.status(400).send('Error fetching works');
+      } else {
+        return res.status(200).json(result);
+      }
+    })
 
 });
 
@@ -66,9 +72,14 @@ app.use(function(err, req, res, next) {
 
 });
 /**
- * export app
+ * app listen
  */
-
+dbo.connectToServer(function(err) {
+  if(err) {
+    console.error(err);
+    process.exit();
+  }
+})
 app.listen(port, () => {
   console.log(`Listening on port ${port}.`);
 });
