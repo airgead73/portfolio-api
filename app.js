@@ -7,7 +7,7 @@
  /**
   * internal imports
  **/
-const router = require('./router');
+const router = require('./units/router');
  /**
  * app activation
  */

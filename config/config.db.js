@@ -11,14 +11,13 @@ const connectToServer = async function() {
 
   await client.connect();
   dbConnection = client.db(dbName);
-  console.log('Successfully connected to database');
+  console.log('Successfully connected to database.');
 
 }
 
 const getDB = function() {
   return dbConnection;
 }
-
 
 module.exports = {
   connectToServer,
