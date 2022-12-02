@@ -1,7 +1,7 @@
 const http = require('http');
 const app = require('./app.js')
 const port = process.env.PORT || 7070;
-const dbo = require('./config.db');
+const dbo = require('./config');
 
 if (port === undefined) {
   throw new Error(
