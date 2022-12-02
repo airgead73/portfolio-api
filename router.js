@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const router = Router();
-const dbo = require('./db');
+const dbo = require('./config.db');
 
 router.get('/works', async(req, res, next) => {
 

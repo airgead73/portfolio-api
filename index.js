@@ -1,7 +1,7 @@
 const http = require('http');
 const app = require('./app.js')
 const port = process.env.PORT || 7070;
-const dbo = require('./db');
+const dbo = require('./config.db');
 
 if (port === undefined) {
   throw new Error(
@@ -12,14 +12,6 @@ if (port === undefined) {
 app.set('port', port);
 
 const server = http.createServer(app);
-
-// dbo.connectToServer(function(err) {
-//   if(err) {
-//     console.error(err);
-//     process.exit();
-//   }
-//   server.listen(port);
-// })
 
 dbo.connectToServer()
   .then(() => {
