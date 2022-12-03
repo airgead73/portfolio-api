@@ -1,7 +1,11 @@
 const { Router } = require('express');
 const router = Router();
+const { workRouter } = require('./works');
+const { photoRouter } = require('./photos');
 const dbo = require('../config');
 
+//router.use('/works', workRouter);
+//router.use('/photos', photoRouter);
 router.get('/works', async(req, res, next) => {
 
   try {
