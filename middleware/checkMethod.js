@@ -1,5 +1,11 @@
 const checkMethod = async(req, res, next) => {
-  console.log('method:', req.method);
+
+  if(req.method !== 'GET') {
+    const error = new Error('Invalid request.');
+    error.status = 400;
+    return next(error);
+  }
+
   next();
 }
 
