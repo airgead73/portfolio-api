@@ -7,6 +7,7 @@ const checkMethod = async(req, res, next) => {
   }
 
   next();
+  
 }
 
 module.exports = checkMethod;
