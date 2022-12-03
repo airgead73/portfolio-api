@@ -8,6 +8,7 @@
   * internal imports
  **/
 const router = require('./units/router');
+const { checkMethod } = require('./middleware');
  /**
  * app activation
  */
@@ -19,6 +20,7 @@ const app = express();
  app.use(express.json({ limit: '50mb' }));
  app.use(express.urlencoded({ limit: '50mb', extended: true }));
  app.use(cookieParser()); 
+ app.use(checkMethod);
  /**
  * routes
  */
