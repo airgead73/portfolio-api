@@ -24,9 +24,11 @@ exports.detail = async(req, res, next) => {
 
     const dbConnect = dbo.getDB();
     const result = await dbConnect.collection('works').find(query).toArray();
+
     if(!result.length) {
       return res.status(401).json({ success: true, message: 'ID cannot be found.'});
     }
+    
     return res.status(200).json(result);
 
   } catch(err) {
